@@ -1,37 +1,42 @@
-# scafolding2
+# Gestor de Tasques
 
-This template should help get you started developing with Vue 3 in Vite.
+Aplicació feta amb Vue 3 per gestionar tasques, refactoritzada en components.
 
-## Recommended IDE Setup
+## Funcionalitats
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Afegir tasques
+- Marcar-les com a completades o desmarcar-les
+- Eliminar-les (amb confirmació)
+- Filtrar per mostrar només les pendents
+- Comptador de total, pendents i completades
+- Notificacions en afegir, completar o eliminar
 
-## Recommended Browser Setup
+## Estructura de components
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+```
+App.vue
+├── TaskForm.vue
+└── TaskList.vue
+    └── TaskItem.vue
+```
 
-## Customize configuration
+| Component | Props | Events |
+|-----------|-------|--------|
+| App.vue | - | - |
+| TaskForm.vue | - | `afegir` |
+| TaskList.vue | `tasques` | `canviar-estat`, `eliminar` |
+| TaskItem.vue | `tasca` | `canviar-estat`, `eliminar` |
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+`App.vue` guarda l'estat i passa les dades cap avall amb props. Els fills avisen el pare amb events (`emit`).
 
-## Project Setup
+## Instal·lació i ús
 
 ```sh
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+Per generar la versió de producció:
 
 ```sh
 npm run build
